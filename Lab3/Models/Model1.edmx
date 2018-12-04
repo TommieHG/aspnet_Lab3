@@ -1,0 +1,341 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="WebshopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Tbl_Customer">
+          <Key>
+            <PropertyRef Name="Cu_ID" />
+          </Key>
+          <Property Name="Cu_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cu_Payment" Type="int" Nullable="false" />
+          <Property Name="Cu_FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cu_LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cu_Street" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cu_ZipCode" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Cu_City" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cu_PhoneNo" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Order">
+          <Key>
+            <PropertyRef Name="Or_ID" />
+          </Key>
+          <Property Name="Or_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Or_Cu_ID" Type="int" Nullable="false" />
+          <Property Name="Or_ToName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Or_ToStreet" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Or_ToZipCode" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="Or_ToCity" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Or_OrderTime" Type="time" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Order_Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderOr_ID" Type="int" Nullable="false" />
+          <Property Name="ProductPr_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Payment_Method">
+          <Key>
+            <PropertyRef Name="Pa_ID" />
+          </Key>
+          <Property Name="Pa_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Pa_Method" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Product">
+          <Key>
+            <PropertyRef Name="Pr_ID" />
+          </Key>
+          <Property Name="Pr_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Pr_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pr_Quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Tbl_Order__Or_Cu__3B75D760">
+          <End Role="Tbl_Customer" Type="Self.Tbl_Customer" Multiplicity="1" />
+          <End Role="Tbl_Order" Type="Self.Tbl_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Customer">
+              <PropertyRef Name="Cu_ID" />
+            </Principal>
+            <Dependent Role="Tbl_Order">
+              <PropertyRef Name="Or_Cu_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tbl_Order__Order__02FC7413">
+          <End Role="Tbl_Order" Type="Self.Tbl_Order" Multiplicity="1" />
+          <End Role="Tbl_Order_Product" Type="Self.Tbl_Order_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Order">
+              <PropertyRef Name="Or_ID" />
+            </Principal>
+            <Dependent Role="Tbl_Order_Product">
+              <PropertyRef Name="OrderOr_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tbl_Order__Produ__03F0984C">
+          <End Role="Tbl_Product" Type="Self.Tbl_Product" Multiplicity="1" />
+          <End Role="Tbl_Order_Product" Type="Self.Tbl_Order_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Product">
+              <PropertyRef Name="Pr_ID" />
+            </Principal>
+            <Dependent Role="Tbl_Order_Product">
+              <PropertyRef Name="ProductPr_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Customer">
+          <End Role="Tbl_Payment_Method" Type="Self.Tbl_Payment_Method" Multiplicity="1" />
+          <End Role="Tbl_Customer" Type="Self.Tbl_Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Payment_Method">
+              <PropertyRef Name="Pa_ID" />
+            </Principal>
+            <Dependent Role="Tbl_Customer">
+              <PropertyRef Name="Cu_Payment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WebshopModelStoreContainer">
+          <EntitySet Name="Tbl_Customer" EntityType="Self.Tbl_Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Order" EntityType="Self.Tbl_Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Order_Product" EntityType="Self.Tbl_Order_Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Payment_Method" EntityType="Self.Tbl_Payment_Method" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Product" EntityType="Self.Tbl_Product" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Tbl_Order__Or_Cu__3B75D760" Association="Self.FK__Tbl_Order__Or_Cu__3B75D760">
+            <End Role="Tbl_Customer" EntitySet="Tbl_Customer" />
+            <End Role="Tbl_Order" EntitySet="Tbl_Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tbl_Order__Order__02FC7413" Association="Self.FK__Tbl_Order__Order__02FC7413">
+            <End Role="Tbl_Order" EntitySet="Tbl_Order" />
+            <End Role="Tbl_Order_Product" EntitySet="Tbl_Order_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tbl_Order__Produ__03F0984C" Association="Self.FK__Tbl_Order__Produ__03F0984C">
+            <End Role="Tbl_Product" EntitySet="Tbl_Product" />
+            <End Role="Tbl_Order_Product" EntitySet="Tbl_Order_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Customer" Association="Self.FK_Tbl_Customer">
+            <End Role="Tbl_Payment_Method" EntitySet="Tbl_Payment_Method" />
+            <End Role="Tbl_Customer" EntitySet="Tbl_Customer" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WebshopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Tbl_Customer">
+          <Key>
+            <PropertyRef Name="Cu_ID" />
+          </Key>
+          <Property Name="Cu_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cu_Payment" Type="Int32" Nullable="false" />
+          <Property Name="Cu_FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cu_LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cu_Street" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cu_ZipCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cu_City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cu_PhoneNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Tbl_Order" Relationship="Self.FK__Tbl_Order__Or_Cu__3B75D760" FromRole="Tbl_Customer" ToRole="Tbl_Order" />
+          <NavigationProperty Name="Tbl_Payment_Method" Relationship="Self.FK_Tbl_Customer" FromRole="Tbl_Customer" ToRole="Tbl_Payment_Method" />
+        </EntityType>
+        <EntityType Name="Tbl_Order">
+          <Key>
+            <PropertyRef Name="Or_ID" />
+          </Key>
+          <Property Name="Or_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Or_Cu_ID" Type="Int32" Nullable="false" />
+          <Property Name="Or_ToName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Or_ToStreet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Or_ToZipCode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Or_ToCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Or_OrderTime" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Tbl_Customer" Relationship="Self.FK__Tbl_Order__Or_Cu__3B75D760" FromRole="Tbl_Order" ToRole="Tbl_Customer" />
+          <NavigationProperty Name="Tbl_Order_Product" Relationship="Self.FK__Tbl_Order__Order__02FC7413" FromRole="Tbl_Order" ToRole="Tbl_Order_Product" />
+        </EntityType>
+        <EntityType Name="Tbl_Order_Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderOr_ID" Type="Int32" Nullable="false" />
+          <Property Name="ProductPr_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tbl_Order" Relationship="Self.FK__Tbl_Order__Order__02FC7413" FromRole="Tbl_Order_Product" ToRole="Tbl_Order" />
+          <NavigationProperty Name="Tbl_Product" Relationship="Self.FK__Tbl_Order__Produ__03F0984C" FromRole="Tbl_Order_Product" ToRole="Tbl_Product" />
+        </EntityType>
+        <EntityType Name="Tbl_Payment_Method">
+          <Key>
+            <PropertyRef Name="Pa_ID" />
+          </Key>
+          <Property Name="Pa_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Pa_Method" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Tbl_Customer" Relationship="Self.FK_Tbl_Customer" FromRole="Tbl_Payment_Method" ToRole="Tbl_Customer" />
+        </EntityType>
+        <EntityType Name="Tbl_Product">
+          <Key>
+            <PropertyRef Name="Pr_ID" />
+          </Key>
+          <Property Name="Pr_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Pr_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Pr_Quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tbl_Order_Product" Relationship="Self.FK__Tbl_Order__Produ__03F0984C" FromRole="Tbl_Product" ToRole="Tbl_Order_Product" />
+        </EntityType>
+        <Association Name="FK__Tbl_Order__Or_Cu__3B75D760">
+          <End Role="Tbl_Customer" Type="Self.Tbl_Customer" Multiplicity="1" />
+          <End Role="Tbl_Order" Type="Self.Tbl_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Customer">
+              <PropertyRef Name="Cu_ID" />
+            </Principal>
+            <Dependent Role="Tbl_Order">
+              <PropertyRef Name="Or_Cu_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Customer">
+          <End Role="Tbl_Payment_Method" Type="Self.Tbl_Payment_Method" Multiplicity="1" />
+          <End Role="Tbl_Customer" Type="Self.Tbl_Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Payment_Method">
+              <PropertyRef Name="Pa_ID" />
+            </Principal>
+            <Dependent Role="Tbl_Customer">
+              <PropertyRef Name="Cu_Payment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tbl_Order__Order__02FC7413">
+          <End Role="Tbl_Order" Type="Self.Tbl_Order" Multiplicity="1" />
+          <End Role="Tbl_Order_Product" Type="Self.Tbl_Order_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Order">
+              <PropertyRef Name="Or_ID" />
+            </Principal>
+            <Dependent Role="Tbl_Order_Product">
+              <PropertyRef Name="OrderOr_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tbl_Order__Produ__03F0984C">
+          <End Role="Tbl_Product" Type="Self.Tbl_Product" Multiplicity="1" />
+          <End Role="Tbl_Order_Product" Type="Self.Tbl_Order_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Product">
+              <PropertyRef Name="Pr_ID" />
+            </Principal>
+            <Dependent Role="Tbl_Order_Product">
+              <PropertyRef Name="ProductPr_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WebshopEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Tbl_Customer" EntityType="Self.Tbl_Customer" />
+          <EntitySet Name="Tbl_Order" EntityType="Self.Tbl_Order" />
+          <EntitySet Name="Tbl_Order_Product" EntityType="Self.Tbl_Order_Product" />
+          <EntitySet Name="Tbl_Payment_Method" EntityType="Self.Tbl_Payment_Method" />
+          <EntitySet Name="Tbl_Product" EntityType="Self.Tbl_Product" />
+          <AssociationSet Name="FK__Tbl_Order__Or_Cu__3B75D760" Association="Self.FK__Tbl_Order__Or_Cu__3B75D760">
+            <End Role="Tbl_Customer" EntitySet="Tbl_Customer" />
+            <End Role="Tbl_Order" EntitySet="Tbl_Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Customer" Association="Self.FK_Tbl_Customer">
+            <End Role="Tbl_Payment_Method" EntitySet="Tbl_Payment_Method" />
+            <End Role="Tbl_Customer" EntitySet="Tbl_Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tbl_Order__Order__02FC7413" Association="Self.FK__Tbl_Order__Order__02FC7413">
+            <End Role="Tbl_Order" EntitySet="Tbl_Order" />
+            <End Role="Tbl_Order_Product" EntitySet="Tbl_Order_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tbl_Order__Produ__03F0984C" Association="Self.FK__Tbl_Order__Produ__03F0984C">
+            <End Role="Tbl_Product" EntitySet="Tbl_Product" />
+            <End Role="Tbl_Order_Product" EntitySet="Tbl_Order_Product" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WebshopModelStoreContainer" CdmEntityContainer="WebshopEntities">
+          <EntitySetMapping Name="Tbl_Customer">
+            <EntityTypeMapping TypeName="WebshopModel.Tbl_Customer">
+              <MappingFragment StoreEntitySet="Tbl_Customer">
+                <ScalarProperty Name="Cu_ID" ColumnName="Cu_ID" />
+                <ScalarProperty Name="Cu_Payment" ColumnName="Cu_Payment" />
+                <ScalarProperty Name="Cu_FirstName" ColumnName="Cu_FirstName" />
+                <ScalarProperty Name="Cu_LastName" ColumnName="Cu_LastName" />
+                <ScalarProperty Name="Cu_Street" ColumnName="Cu_Street" />
+                <ScalarProperty Name="Cu_ZipCode" ColumnName="Cu_ZipCode" />
+                <ScalarProperty Name="Cu_City" ColumnName="Cu_City" />
+                <ScalarProperty Name="Cu_PhoneNo" ColumnName="Cu_PhoneNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Order">
+            <EntityTypeMapping TypeName="WebshopModel.Tbl_Order">
+              <MappingFragment StoreEntitySet="Tbl_Order">
+                <ScalarProperty Name="Or_ID" ColumnName="Or_ID" />
+                <ScalarProperty Name="Or_Cu_ID" ColumnName="Or_Cu_ID" />
+                <ScalarProperty Name="Or_ToName" ColumnName="Or_ToName" />
+                <ScalarProperty Name="Or_ToStreet" ColumnName="Or_ToStreet" />
+                <ScalarProperty Name="Or_ToZipCode" ColumnName="Or_ToZipCode" />
+                <ScalarProperty Name="Or_ToCity" ColumnName="Or_ToCity" />
+                <ScalarProperty Name="Or_OrderTime" ColumnName="Or_OrderTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Order_Product">
+            <EntityTypeMapping TypeName="WebshopModel.Tbl_Order_Product">
+              <MappingFragment StoreEntitySet="Tbl_Order_Product">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OrderOr_ID" ColumnName="OrderOr_ID" />
+                <ScalarProperty Name="ProductPr_ID" ColumnName="ProductPr_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Payment_Method">
+            <EntityTypeMapping TypeName="WebshopModel.Tbl_Payment_Method">
+              <MappingFragment StoreEntitySet="Tbl_Payment_Method">
+                <ScalarProperty Name="Pa_ID" ColumnName="Pa_ID" />
+                <ScalarProperty Name="Pa_Method" ColumnName="Pa_Method" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Product">
+            <EntityTypeMapping TypeName="WebshopModel.Tbl_Product">
+              <MappingFragment StoreEntitySet="Tbl_Product">
+                <ScalarProperty Name="Pr_ID" ColumnName="Pr_ID" />
+                <ScalarProperty Name="Pr_Name" ColumnName="Pr_Name" />
+                <ScalarProperty Name="Pr_Quantity" ColumnName="Pr_Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WebshopModelStoreContainer" CdmEntityContainer="WebshopEntities">
+    <EntitySetMapping Name="Tbl_Customer">
+      <EntityTypeMapping TypeName="WebshopModel.Tbl_Customer">
+        <MappingFragment StoreEntitySet="Tbl_Customer">
+          <ScalarProperty Name="Cu_ID" ColumnName="Cu_ID" />
+          <ScalarProperty Name="Cu_Payment" ColumnName="Cu_Payment" />
+          <ScalarProperty Name="Cu_FirstName" ColumnName="Cu_FirstName" />
+          <ScalarProperty Name="Cu_LastName" ColumnName="Cu_LastName" />
+          <ScalarProperty Name="Cu_Street" ColumnName="Cu_Street" />
+          <ScalarProperty Name="Cu_ZipCode" ColumnName="Cu_ZipCode" />
+          <ScalarProperty Name="Cu_City" ColumnName="Cu_City" />
+          <ScalarProperty Name="Cu_PhoneNo" ColumnName="Cu_PhoneNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Order">
+      <EntityTypeMapping TypeName="WebshopModel.Tbl_Order">
+        <MappingFragment StoreEntitySet="Tbl_Order">
+          <ScalarProperty Name="Or_ID" ColumnName="Or_ID" />
+          <ScalarProperty Name="Or_Cu_ID" ColumnName="Or_Cu_ID" />
+          <ScalarProperty Name="Or_ToName" ColumnName="Or_ToName" />
+          <ScalarProperty Name="Or_ToStreet" ColumnName="Or_ToStreet" />
+          <ScalarProperty Name="Or_ToZipCode" ColumnName="Or_ToZipCode" />
+          <ScalarProperty Name="Or_ToCity" ColumnName="Or_ToCity" />
+          <ScalarProperty Name="Or_OrderTime" ColumnName="Or_OrderTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Order_Product">
+      <EntityTypeMapping TypeName="WebshopModel.Tbl_Order_Product">
+        <MappingFragment StoreEntitySet="Tbl_Order_Product">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OrderOr_ID" ColumnName="OrderOr_ID" />
+          <ScalarProperty Name="ProductPr_ID" ColumnName="ProductPr_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Payment_Method">
+      <EntityTypeMapping TypeName="WebshopModel.Tbl_Payment_Method">
+        <MappingFragment StoreEntitySet="Tbl_Payment_Method">
+          <ScalarProperty Name="Pa_ID" ColumnName="Pa_ID" />
+          <ScalarProperty Name="Pa_Method" ColumnName="Pa_Method" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Product">
+      <EntityTypeMapping TypeName="WebshopModel.Tbl_Product">
+        <MappingFragment StoreEntitySet="Tbl_Product">
+          <ScalarProperty Name="Pr_ID" ColumnName="Pr_ID" />
+          <ScalarProperty Name="Pr_Name" ColumnName="Pr_Name" />
+          <ScalarProperty Name="Pr_Quantity" ColumnName="Pr_Quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
