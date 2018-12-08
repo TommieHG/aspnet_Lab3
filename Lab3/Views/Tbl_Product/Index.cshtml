@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Lab3.Models.Tbl_Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@*This is added for searching functionality*@
+@using (Html.BeginForm())
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Pr_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pr_Quantity)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pr_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pr_Quantity)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Pr_ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Pr_ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Pr_ID })
+            </td>
+        </tr>
+    }
+
+</table>

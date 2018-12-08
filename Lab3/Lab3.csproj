@@ -156,6 +156,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Tbl_CustomerController.cs" />
+    <Compile Include="Controllers\Tbl_OrderController.cs" />
+    <Compile Include="Controllers\Tbl_Order_ProductController.cs" />
+    <Compile Include="Controllers\Tbl_Payment_MethodController.cs" />
+    <Compile Include="Controllers\Tbl_ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -251,6 +256,31 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Tbl_Customer\Create.cshtml" />
+    <Content Include="Views\Tbl_Customer\Delete.cshtml" />
+    <Content Include="Views\Tbl_Customer\Details.cshtml" />
+    <Content Include="Views\Tbl_Customer\Edit.cshtml" />
+    <Content Include="Views\Tbl_Customer\Index.cshtml" />
+    <Content Include="Views\Tbl_Order\Create.cshtml" />
+    <Content Include="Views\Tbl_Order\Delete.cshtml" />
+    <Content Include="Views\Tbl_Order\Details.cshtml" />
+    <Content Include="Views\Tbl_Order\Edit.cshtml" />
+    <Content Include="Views\Tbl_Order\Index.cshtml" />
+    <Content Include="Views\Tbl_Order_Product\Create.cshtml" />
+    <Content Include="Views\Tbl_Order_Product\Delete.cshtml" />
+    <Content Include="Views\Tbl_Order_Product\Details.cshtml" />
+    <Content Include="Views\Tbl_Order_Product\Edit.cshtml" />
+    <Content Include="Views\Tbl_Order_Product\Index.cshtml" />
+    <Content Include="Views\Tbl_Payment_Method\Create.cshtml" />
+    <Content Include="Views\Tbl_Payment_Method\Delete.cshtml" />
+    <Content Include="Views\Tbl_Payment_Method\Details.cshtml" />
+    <Content Include="Views\Tbl_Payment_Method\Edit.cshtml" />
+    <Content Include="Views\Tbl_Payment_Method\Index.cshtml" />
+    <Content Include="Views\Tbl_Product\Create.cshtml" />
+    <Content Include="Views\Tbl_Product\Delete.cshtml" />
+    <Content Include="Views\Tbl_Product\Details.cshtml" />
+    <Content Include="Views\Tbl_Product\Edit.cshtml" />
+    <Content Include="Views\Tbl_Product\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -1,0 +1,66 @@
+﻿@model Lab3.Models.Tbl_Order
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tbl_Order</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Or_ToName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Or_ToName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Or_ToStreet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Or_ToStreet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Or_ToZipCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Or_ToZipCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Or_ToCity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Or_ToCity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Or_OrderTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Or_OrderTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tbl_Customer.Cu_FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tbl_Customer.Cu_FirstName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Or_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

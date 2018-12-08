@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Lab3.Models.Tbl_Order>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Or_ToName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Or_ToStreet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Or_ToZipCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Or_ToCity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Or_OrderTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tbl_Customer.Cu_FirstName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Or_ToName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Or_ToStreet)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Or_ToZipCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Or_ToCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Or_OrderTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tbl_Customer.Cu_FirstName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Or_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Or_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Or_ID })
+        </td>
+    </tr>
+}
+
+</table>

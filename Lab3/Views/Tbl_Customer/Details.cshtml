@@ -1,0 +1,74 @@
+﻿@model Lab3.Models.Tbl_Customer
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tbl_Customer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cu_FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cu_FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cu_LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cu_LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cu_Street)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cu_Street)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cu_ZipCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cu_ZipCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cu_City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cu_City)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cu_PhoneNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cu_PhoneNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tbl_Payment_Method.Pa_Method)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tbl_Payment_Method.Pa_Method)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Cu_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
