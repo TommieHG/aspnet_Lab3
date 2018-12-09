@@ -93,3 +93,7 @@ C:\Users\Tommie\Documents\Kod\MVC\Lab3\Lab3\obj\Debug\Lab3.csproj.CoreCompileInp
 C:\Users\Tommie\Documents\Kod\MVC\Lab3\Lab3\obj\Debug\Lab3.csproj.CopyComplete
 C:\Users\Tommie\Documents\Kod\MVC\Lab3\Lab3\obj\Debug\Lab3.dll
 C:\Users\Tommie\Documents\Kod\MVC\Lab3\Lab3\obj\Debug\Lab3.pdb
+C:\Users\Tommie\Documents\Kod\MVC\Lab3\Lab3\bin\PagedList.dll
+C:\Users\Tommie\Documents\Kod\MVC\Lab3\Lab3\bin\PagedList.Mvc.dll
+C:\Users\Tommie\Documents\Kod\MVC\Lab3\Lab3\bin\PagedList.xml
+C:\Users\Tommie\Documents\Kod\MVC\Lab3\Lab3\bin\PagedList.Mvc.xml

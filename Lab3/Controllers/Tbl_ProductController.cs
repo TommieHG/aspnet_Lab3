@@ -15,9 +15,18 @@ namespace Lab3.Controllers
         private WebshopEntities db = new WebshopEntities();
 
         // GET: Tbl_Product
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            return View(db.Tbl_Product.ToList());
+            //added variable to manipulate in if
+            var products = from s in db.Tbl_Product select s;
+
+            //if the searchString isn't empty, pick the fields where data matches searchString and return to view
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                products = products.Where(s => s.Pr_Name.ToUpper().Contains(searchString.ToUpper()) || s.Pr_Quantity.ToString().Contains(searchString.ToUpper()));
+            }
+
+            return View(products.ToList());
         }
 
         // GET: Tbl_Product/Details/5
