@@ -14,7 +14,7 @@ namespace Lab3.Controllers
     {
         private WebshopEntities db = new WebshopEntities();
 
-        //// GET: Tbl_Customer
+        //GET: Tbl_Customer
         //public ActionResult Index()
         //{
         //    var tbl_Customer = db.Tbl_Customer.Include(t => t.Tbl_Payment_Method);
@@ -25,7 +25,7 @@ namespace Lab3.Controllers
         public ActionResult Index(string sortOrder)
         {
             ViewBag.LastnameSort = String.IsNullOrEmpty(sortOrder) ? "Lastname_desc" : "";
-            ViewBag.FirstnameSort = sortOrder == "Firstname" ? "Firstname_desc" : "Firstname";
+            ViewBag.FirstnameSort = sortOrder == "Firstname" ? "Firstname_desc" : "Firstname";      
 
             var customers = from s in db.Tbl_Customer select s;
 

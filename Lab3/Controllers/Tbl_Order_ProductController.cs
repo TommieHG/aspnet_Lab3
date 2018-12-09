@@ -14,7 +14,7 @@ namespace Lab3.Controllers
     {
         private WebshopEntities db = new WebshopEntities();
 
-        // GET: Tbl_Order_Product
+        //GET: Tbl_Order_Product
         public ActionResult Index()
         {
             var tbl_Order_Product = db.Tbl_Order_Product.Include(t => t.Tbl_Order).Include(t => t.Tbl_Product);

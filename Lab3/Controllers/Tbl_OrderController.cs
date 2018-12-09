@@ -15,10 +15,23 @@ namespace Lab3.Controllers
         private WebshopEntities db = new WebshopEntities();
 
         // GET: Tbl_Order
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+        //    var tbl_Order = db.Tbl_Order.Include(t => t.Tbl_Customer);
+        //    return View(tbl_Order.ToList());
+        //}
+
+        public ActionResult Index(string filterCity)
         {
-            var tbl_Order = db.Tbl_Order.Include(t => t.Tbl_Customer);
-            return View(tbl_Order.ToList());
+            ViewBag.filter = (from s in db.Tbl_Order select s.Or_ToCity).Distinct();
+
+            var filter = from r in db.Tbl_Order
+                         orderby r.Or_ToName
+                         where r.Or_ToCity == filterCity || filterCity == null || filterCity == ""
+                         select r;
+
+            return View(filter.ToList());
+
         }
 
         // GET: Tbl_Order/Details/5

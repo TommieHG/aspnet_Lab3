@@ -9,6 +9,15 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Filter by city: @Html.DropDownList("filterCity", new SelectList(ViewBag.filter),"")
+        <input type="submit" value="Filter" />
+    </p>
+}
+
 <table class="table">
     <tr>
         <th>
@@ -32,32 +41,33 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Or_ToName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Or_ToStreet)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Or_ToZipCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Or_ToCity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Or_OrderTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tbl_Customer.Cu_FirstName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Or_ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Or_ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Or_ID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Or_ToName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Or_ToStreet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Or_ToZipCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Or_ToCity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Or_OrderTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tbl_Customer.Cu_FirstName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Or_ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Or_ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Or_ID })
+            </td>
+        </tr>
+    }
 
 </table>

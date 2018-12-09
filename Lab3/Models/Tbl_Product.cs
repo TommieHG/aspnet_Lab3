@@ -11,6 +11,7 @@ namespace Lab3.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Tbl_Product
     {
@@ -21,6 +22,8 @@ namespace Lab3.Models
         }
     
         public int Pr_ID { get; set; }
+        
+        [StringLength(100, MinimumLength = 3, ErrorMessage = "The product name must be at least three characters long!")]
         public string Pr_Name { get; set; }
         public int Pr_Quantity { get; set; }
     

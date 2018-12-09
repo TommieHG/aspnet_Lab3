@@ -9,7 +9,7 @@
         <EntityTypeShape EntityType="WebshopModel.Tbl_Order" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="WebshopModel.Tbl_Order_Product" Width="1.5" PointX="7.5" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="WebshopModel.Tbl_Payment_Method" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebshopModel.Tbl_Product" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebshopModel.Tbl_Product" Width="1.5" PointX="9.875" PointY="1.875" IsExpanded="true" />
         <AssociationConnector Association="WebshopModel.FK__Tbl_Order__Or_Cu__3B75D760" ManuallyRouted="false" />
         <AssociationConnector Association="WebshopModel.FK_Tbl_Customer" ManuallyRouted="false" />
         <AssociationConnector Association="WebshopModel.FK__Tbl_Order__Order__02FC7413" ManuallyRouted="false" />
